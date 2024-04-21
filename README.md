@@ -51,5 +51,5 @@ Link: [Bank Customer Analysis Dataset]()
 
 ## Objective
 
-The purpose of this project is to be part of an ongoing process to refine and develop my data analysis skills. In this analysis from bank customers, I will use SQL to clean, and discover new insights within the dataset to better understand the customer preferences and trends. Key areas of focus include (tbd)
+The purpose of this project is to be part of an ongoing process to refine and develop my data analysis skills. In this analysis of bank customers, I will use SQL to clean, and discover new insights within the dataset to better understand current customer preferences and trends to identify characteristics of the ideal customer for a targeted marketing campaign. Key areas of focus include customer performance by geographic location, age, and credit score.
 ## Analysis Outline
