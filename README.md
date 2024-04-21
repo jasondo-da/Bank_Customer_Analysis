@@ -25,7 +25,7 @@ Link: [Bank Customer Analysis](https://github.com/jasondo-da/Bank_Customer_Analy
 
 Link: [Original Kaggle Dataset](https://www.kaggle.com/datasets/radheshyamkollipara/bank-customer-churn)
 
-Link: [Bank Customer Analysis Dataset]()
+Link: [Bank Customer Analysis Dataset](https://github.com/jasondo-da/Bank_Customer_Analysis)
 
 | Bank Customer Analysis Dataset Tables | Table Description |
 | :------------- | :------------ |
