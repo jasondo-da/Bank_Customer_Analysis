@@ -90,14 +90,28 @@ WHERE customer_id > 0
 -- Query SQL --
 ---------------
 
-/* Finding the customer tenure distribution */
-SELECT tenure, COUNT(tenure)
+/* Which gender is the main demographic and where are they from? */
+SELECT gender,
+	COUNT(gender) customer_count,
+    geography
 FROM customer_profile
-GROUP BY tenure
-ORDER BY tenure
+GROUP BY gender, geography
+ORDER BY COUNT(gender) DESC
 
-	
-/* Uncovering customer age distribution */
+
+/* Which country contributes to the most balance held and products purchased? */
+SELECT geography,
+	COUNT(DISTINCT customer_id) customer_count,
+	SUM(balance) country_balances,
+   	SUM(products_purchased) total_purchases,
+    	ROUND(SUM(balance) / COUNT(DISTINCT customer_id), 2) customer_to_balance_ratio,
+    	ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) customer_to_purchase_ratio
+FROM customer_profile
+GROUP BY geography
+ORDER BY COUNT(DISTINCT customer_id) DESC
+
+
+/* Do different age groups show signs of more product purchases or larger held balances? */
 SELECT FLOOR(
 	(CASE WHEN age = mm.max_age
 		THEN mm.max_age * 0.999999999 
@@ -106,10 +120,14 @@ SELECT FLOOR(
 	) / (
 		mm.max_age - mm.min_age
 		) * 10
-		) + 1 cohort,
+		    ) + 1 cohort,
 	MIN(age) min_age,
 	MAX(age) max_age,
-    	COUNT(age) count
+	COUNT(age) count,
+    SUM(products_purchased) total_purchases,
+    ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) customer_to_purchase_ratio,
+    SUM(balance) total_balance_held,
+    ROUND(SUM(balance) / COUNT(DISTINCT customer_id), 2) balance_to_customer_ratio
 FROM customer_profile
 CROSS JOIN (
     SELECT MAX(age) max_age,
@@ -120,4 +138,38 @@ GROUP BY cohort
 ORDER BY cohort
 
 
+/* Do credit scores affect product purchases or larger held balances?  */
+SELECT FLOOR(
+	(CASE WHEN credit_score = mm.max_credit_score
+		THEN mm.max_credit_score * 0.999999999 
+		ELSE credit_score END - mm.min_credit_score
+	) / (
+        mm.max_credit_score - mm.min_credit_score
+		) * 10
+		    ) + 1 cohort,
+	MIN(credit_score) min_credit_score,
+	MAX(credit_score) max_credit_score,
+    COUNT(DISTINCT customer_id) customer_count,
+    SUM(products_purchased) total_purchases,
+    ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) purchase_to_customer_ratio,
+    SUM(balance) total_balance_held,
+    ROUND(SUM(balance) / COUNT(DISTINCT customer_id), 2) balance_to_customer_ratio
+FROM customer_profile
+CROSS JOIN (
+    SELECT MAX(credit_score) max_credit_score,
+        MIN(credit_score) min_credit_score
+    FROM customer_profile) mm
+WHERE age IS NOT NULL
+GROUP BY cohort
+ORDER BY cohort
+
+
+/* Finding the customer tenure distribution */
+SELECT tenure, COUNT(tenure)
+FROM customer_profile
+GROUP BY tenure
+ORDER BY tenure
+
+
 /*  */
+
