@@ -90,28 +90,28 @@ WHERE customer_id > 0
 -- Query SQL --
 ---------------
 
-/* Which gender is the main demographic and where are they from? */
-SELECT gender,
-	COUNT(gender) customer_count,
-    geography
+/* Who is the main demographic and where are they from? */
+SELECT geography,
+	gender,
+	COUNT(gender) customer_count
 FROM customer_profile
 GROUP BY gender, geography
 ORDER BY COUNT(gender) DESC
 
 
-/* Which country contributes to the most balance held and products purchased? */
+/* What are the differences in balances held and product purchases between different countries? */
 SELECT geography,
 	COUNT(DISTINCT customer_id) customer_count,
 	SUM(balance) country_balances,
-   	SUM(products_purchased) total_purchases,
-    	ROUND(SUM(balance) / COUNT(DISTINCT customer_id), 2) customer_to_balance_ratio,
-    	ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) customer_to_purchase_ratio
+    SUM(products_purchased) total_purchases,
+    ROUND(SUM(balance) / COUNT(DISTINCT customer_id), 2) customer_to_balance_ratio,
+    ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) customer_to_purchase_ratio
 FROM customer_profile
 GROUP BY geography
 ORDER BY COUNT(DISTINCT customer_id) DESC
 
 
-/* Do different age groups show signs of more product purchases or larger held balances? */
+/* Do different customer age groups show different trends of elevated product purchases or larger held balances? */
 SELECT FLOOR(
 	(CASE WHEN age = mm.max_age
 		THEN mm.max_age * 0.999999999 
@@ -138,7 +138,7 @@ GROUP BY cohort
 ORDER BY cohort
 
 
-/* Do credit scores affect product purchases or larger held balances?  */
+/* Is there a correlation between credit scores and product purchases or larger held balances? */
 SELECT FLOOR(
 	(CASE WHEN credit_score = mm.max_credit_score
 		THEN mm.max_credit_score * 0.999999999 
@@ -164,12 +164,44 @@ GROUP BY cohort
 ORDER BY cohort
 
 
-/* Finding the customer tenure distribution */
-SELECT tenure, COUNT(tenure)
+/* Does customer tenure affect their likeliness to purchase a product? */
+SELECT tenure,
+	COUNT(tenure) count,
+    SUM(products_purchased) purchases,
+    ROUND(SUM(products_purchased) / COUNT(tenure), 2) purchases_per_customer
 FROM customer_profile
 GROUP BY tenure
 ORDER BY tenure
 
 
-/*  */
+/* Does customer balance affect customer purchases? */
+SELECT FLOOR(
+	(CASE WHEN balance = mm.max_balance
+		THEN mm.max_balance * 0.999999999 
+		ELSE balance END - mm.min_balance
+	) / (
+        mm.max_balance - mm.min_balance
+		) * 10
+		    ) + 1 cohort,
+	MIN(balance) min_balance,
+	MAX(balance) max_balance,
+    COUNT(DISTINCT customer_id) customer_count,
+    SUM(products_purchased) purchases_by_balance,
+    ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) purchases_per_customer
+FROM customer_profile
+CROSS JOIN (
+    SELECT MAX(balance) max_balance,
+        MIN(balance) min_balance
+    FROM customer_profile) mm
+WHERE age IS NOT NULL
+GROUP BY cohort
+ORDER BY cohort
 
+	
+/* Does credit card type influence customer purchases? */
+SELECT card_type,
+	COUNT(DISTINCT customer_id) total_customers,
+	SUM(products_purchased) total_purchases,
+    ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) purchases_per_cardtype
+FROM customer_profile
+GROUP BY card_type
