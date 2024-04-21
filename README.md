@@ -1,6 +1,7 @@
 # Bank Customer Analysis
 
 Analysis In Progress
+
 # Consumer Behavior Analysis
 
 ## Table of Contents
@@ -25,7 +26,7 @@ Link: [Bank Customer Analysis](https://github.com/jasondo-da/Bank_Customer_Analy
 
 Link: [Original Kaggle Dataset](https://www.kaggle.com/datasets/radheshyamkollipara/bank-customer-churn)
 
-Link: [Bank Customer Analysis Dataset](https://github.com/jasondo-da/Bank_Customer_Analysis)
+Link: [Bank Customer Analysis Dataset](https://github.com/jasondo-da/Bank_Customer_Analysis/blob/main/customer_churn_records.csv)
 
 | Bank Customer Analysis Dataset Tables | Table Description |
 | :------------- | :------------ |
