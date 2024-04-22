@@ -167,7 +167,7 @@ ORDER BY cohort
 /* Does customer tenure affect their likeliness to purchase a product? */
 SELECT tenure,
 	COUNT(tenure) count,
-    SUM(products_purchased) purchases,
+    SUM(products_purchased) total_purchases,
     ROUND(SUM(products_purchased) / COUNT(tenure), 2) purchases_per_customer
 FROM customer_profile
 GROUP BY tenure
@@ -186,7 +186,7 @@ SELECT FLOOR(
 	MIN(balance) min_balance,
 	MAX(balance) max_balance,
     COUNT(DISTINCT customer_id) customer_count,
-    SUM(products_purchased) purchases_by_balance,
+    SUM(products_purchased) purchases_from_balance_cohorts,
     ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) purchases_per_customer
 FROM customer_profile
 CROSS JOIN (
