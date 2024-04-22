@@ -104,8 +104,8 @@ SELECT geography,
 	COUNT(DISTINCT customer_id) customer_count,
 	SUM(balance) country_balances,
     SUM(products_purchased) total_purchases,
-    ROUND(SUM(balance) / COUNT(DISTINCT customer_id), 2) customer_to_balance_ratio,
-    ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) customer_to_purchase_ratio
+    ROUND(SUM(balance) / COUNT(DISTINCT customer_id), 2) balance_per_customer,
+    ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) purchase_per_customer
 FROM customer_profile
 GROUP BY geography
 ORDER BY COUNT(DISTINCT customer_id) DESC
@@ -125,9 +125,9 @@ SELECT FLOOR(
 	MAX(age) max_age,
 	COUNT(age) count,
     SUM(products_purchased) total_purchases,
-    ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) customer_to_purchase_ratio,
+    ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) purchases_per_customer,
     SUM(balance) total_balance_held,
-    ROUND(SUM(balance) / COUNT(DISTINCT customer_id), 2) balance_to_customer_ratio
+    ROUND(SUM(balance) / COUNT(DISTINCT customer_id), 2) balance_per_customer
 FROM customer_profile
 CROSS JOIN (
     SELECT MAX(age) max_age,
@@ -151,9 +151,9 @@ SELECT FLOOR(
 	MAX(credit_score) max_credit_score,
     COUNT(DISTINCT customer_id) customer_count,
     SUM(products_purchased) total_purchases,
-    ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) purchase_to_customer_ratio,
+    ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) purchase_per_customer,
     SUM(balance) total_balance_held,
-    ROUND(SUM(balance) / COUNT(DISTINCT customer_id), 2) balance_to_customer_ratio
+    ROUND(SUM(balance) / COUNT(DISTINCT customer_id), 2) balance_per_customer
 FROM customer_profile
 CROSS JOIN (
     SELECT MAX(credit_score) max_credit_score,
