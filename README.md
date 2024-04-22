@@ -1,5 +1,7 @@
 # Bank Customer Analysis
 
+![image](https://github.com/jasondo-da/Bank_Customer_Analysis/assets/138195365/675fb646-7073-40a9-8e1d-fb53876fcbf3)
+
 ## Table of Contents
 
 - [Project Introduction](#project-introduction)
