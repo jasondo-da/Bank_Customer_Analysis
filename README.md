@@ -79,9 +79,9 @@ Output:
 SELECT geography,
 	COUNT(DISTINCT customer_id) customer_count,
 	SUM(balance) country_balances,
-    SUM(products_purchased) total_purchases,
-    ROUND(SUM(balance) / COUNT(DISTINCT customer_id), 2) balance_per_customer,
-    ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) purchases_per_customer
+	SUM(products_purchased) total_purchases,
+	ROUND(SUM(balance) / COUNT(DISTINCT customer_id), 2) balance_per_customer,
+	ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) purchases_per_customer
 FROM customer_profile
 GROUP BY geography
 ORDER BY COUNT(DISTINCT customer_id) DESC
@@ -109,10 +109,10 @@ SELECT FLOOR(
 	MIN(age) min_age,
 	MAX(age) max_age,
 	COUNT(age) count,
-    SUM(products_purchased) total_purchases,
-    ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) purchases_per_customer,
-    SUM(balance) total_balance_held,
-    ROUND(SUM(balance) / COUNT(DISTINCT customer_id), 2) balance_per_customer
+	SUM(products_purchased) total_purchases,
+	ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) purchases_per_customer,
+	SUM(balance) total_balance_held,
+	ROUND(SUM(balance) / COUNT(DISTINCT customer_id), 2) balance_per_customer
 FROM customer_profile
 CROSS JOIN (
     SELECT MAX(age) max_age,
@@ -150,11 +150,11 @@ SELECT FLOOR(
 		    ) + 1 cohort,
 	MIN(credit_score) min_credit_score,
 	MAX(credit_score) max_credit_score,
-    COUNT(DISTINCT customer_id) customer_count,
-    SUM(products_purchased) total_purchases,
-    ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) purchase_per_customer,
-    SUM(balance) total_balance_held,
-    ROUND(SUM(balance) / COUNT(DISTINCT customer_id), 2) balance_per_customer
+    	COUNT(DISTINCT customer_id) customer_count,
+    	SUM(products_purchased) total_purchases,
+    	ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) purchase_per_customer,
+    	SUM(balance) total_balance_held,
+    	ROUND(SUM(balance) / COUNT(DISTINCT customer_id), 2) balance_per_customer
 FROM customer_profile
 CROSS JOIN (
     SELECT MAX(credit_score) max_credit_score,
@@ -184,8 +184,8 @@ Output:
 /* Does customer tenure affect their likeliness to purchase a product? */
 SELECT tenure,
 	COUNT(tenure) count,
-    SUM(products_purchased) total_purchases,
-    ROUND(SUM(products_purchased) / COUNT(tenure), 2) purchases_per_customer
+	SUM(products_purchased) total_purchases,
+	ROUND(SUM(products_purchased) / COUNT(tenure), 2) purchases_per_customer
 FROM customer_profile
 GROUP BY tenure
 ORDER BY tenure
@@ -218,9 +218,9 @@ SELECT FLOOR(
 		    ) + 1 cohort,
 	MIN(balance) min_balance,
 	MAX(balance) max_balance,
-    COUNT(DISTINCT customer_id) customer_count,
-    SUM(products_purchased) purchases_from_balance_cohorts,
-    ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) purchases_per_customer
+    	COUNT(DISTINCT customer_id) customer_count,
+    	SUM(products_purchased) purchases_from_balance_cohorts,
+    	ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) purchases_per_customer
 FROM customer_profile
 CROSS JOIN (
     SELECT MAX(balance) max_balance,
@@ -250,7 +250,7 @@ Output:
 SELECT card_type,
 	COUNT(DISTINCT customer_id) total_customers,
 	SUM(products_purchased) total_purchases,
-    ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) purchases_per_cardtype
+    	ROUND(SUM(products_purchased) / COUNT(DISTINCT customer_id), 2) purchases_per_cardtype
 FROM customer_profile
 GROUP BY card_type
 ```
