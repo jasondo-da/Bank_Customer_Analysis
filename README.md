@@ -7,12 +7,11 @@
 - [Project Introduction](#project-introduction)
     - [Bank Customer Analysis SQL Queries](#bank-customer-analysis-sql-queries)
     - [Bank Customer Analysis Dataset](#bank-customer-analysis-dataset)
-- [Objective](#objective)
 - [Analysis Outline](#analysis-outline)
 
 ## Project Introduction
 
-This is a Kaggle-sourced dataset used to refine my data analytics skills further and gain more data science experience. The “Bank Customer Churn” contains a variety of intricate insights into customer characteristics, preferences, and purchasing mannerisms when interacting with their bank and bank products.
+This is a Kaggle-sourced dataset used to refine my data analytics skills further and gain more data science experience. The “Bank Customer Churn” contains a variety of intricate insights into customer characteristics, preferences, and purchasing mannerisms when interacting with their bank and bank products. The purpose of this project is to be part of an ongoing process to refine and develop my data analysis skills. In this analysis of bank customers, I will use SQL to clean, and discover new insights within the dataset to better understand current customer preferences and trends to identify characteristics of the ideal customer for a targeted marketing campaign. Key areas of focus include analysis on uncovering insights on signs of above-average customer product purchases, and elevated held balances with the intent for future targeting marketing campaigns to search for other similar customers.
 
 ### Bank Customer Analysis SQL Queries
 All SQL queries on GitHub.
@@ -47,9 +46,6 @@ Link: [Bank Customer Analysis Dataset](https://github.com/jasondo-da/Bank_Custom
 | Card Type | type of card held by the customer |
 | Points Earned | the credit card points earned by the customer from credit card usage| 
 
-## Objective
-
-The purpose of this project is to be part of an ongoing process to refine and develop my data analysis skills. In this analysis of bank customers, I will use SQL to clean, and discover new insights within the dataset to better understand current customer preferences and trends to identify characteristics of the ideal customer for a targeted marketing campaign. Key areas of focus include analysis on uncovering insights on signs of above-average customer product purchases, and elevated held balances with the intent for future targeting marketing campaigns to search for other similar customers.
 
 ## Analysis Outline
 
