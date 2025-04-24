@@ -5,20 +5,20 @@
 ## Table of Contents
 
 - [Project Introduction](#project-introduction)
-    - [Bank Customer Analysis SQL Queries](#bank-customer-analysis-sql-queries)
-    - [Bank Customer Analysis Dataset](#bank-customer-analysis-dataset)
+	- [Bank Customer Analysis SQL Queries](#bank-customer-analysis-sql-queries)
+	- [Bank Customer Analysis Dataset](#bank-customer-analysis-dataset)
 - [Analysis Outline](#analysis-outline)
 
 ## Project Introduction
 
 This is a Kaggle-sourced dataset used to refine my data analytics skills further and gain more data science experience. The “Bank Customer Churn” contains a variety of intricate insights into customer characteristics, preferences, and purchasing mannerisms when interacting with their bank and bank products. The purpose of this project is to be part of an ongoing process to refine and develop my data analysis skills. In this analysis of bank customers, I will use SQL to clean, and discover new insights within the dataset to better understand current customer preferences and trends to identify characteristics of the ideal customer for a targeted marketing campaign. Key areas of focus include analysis on uncovering insights on signs of above-average customer product purchases, and elevated held balances with the intent for future targeting marketing campaigns to search for other similar customers.
 
-### Bank Customer Analysis SQL Queries
+## Bank Customer Analysis SQL Queries
 All SQL queries on GitHub.
 
 Link: [Bank Customer Analysis](https://github.com/jasondo-da/Bank_Customer_Analysis/blob/main/queries.sql)
 
-### Bank Customer Analysis Dataset
+## Bank Customer Analysis Dataset
 The Bank Customer Churn Dataset provides a detailed overview of the characteristics, preferences, and purchasing behaviors of their customers. It includes demographic information, geographic locations, credit scores, account balances, purchase history, and many more. This dataset is essential for the bank to tailor its growth, marketing strategies, and product offerings to meet its customers’ needs and enhance their banking experience, ultimately driving revenue and loyalty. This project was originally completed using the MySQL platform and the original dataset formatting has been adjusted and cleaned to work on the MySQL platform.
 
 Link: [Original Kaggle Dataset](https://www.kaggle.com/datasets/radheshyamkollipara/bank-customer-churn)
